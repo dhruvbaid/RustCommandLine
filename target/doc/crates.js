@@ -1,1 +1,1 @@
-window.ALL_CRATES = ["command_line"];
+window.ALL_CRATES = ["cli","command_line"];

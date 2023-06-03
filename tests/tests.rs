@@ -9,3 +9,8 @@ pub fn test_echo() {
 pub fn test_echo2() {
     assert_eq!(echo(vec![]), String::new());
 }
+
+#[test]
+pub fn test_ls() {
+    assert_eq!(ls(), String::from("/root/rust_projects/command_line"));
+}

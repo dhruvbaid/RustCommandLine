@@ -64,6 +64,9 @@
 <a href="#64" id="64">64</a>
 <a href="#65" id="65">65</a>
 <a href="#66" id="66">66</a>
+<a href="#67" id="67">67</a>
+<a href="#68" id="68">68</a>
+<a href="#69" id="69">69</a>
 </pre><pre class="rust"><code><span class="kw">use </span>std::env;
 <span class="kw">use </span>std::fs;
 <span class="kw">use </span>std::fs::File;
@@ -109,9 +112,10 @@
 /// ```args: Vec&lt;&amp;str&gt;``` - vector representing space-separated inputs from user
 /// # Basic Usage
 /// ```
-/// echo(vec![&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
+/// use cli::echo;
+/// let res: String = echo(vec![&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]);
 /// ```
-</span><span class="kw">pub fn </span>echo(args: Vec&lt;<span class="kw-2">&amp;</span>str&gt;) {
+</span><span class="kw">pub fn </span>echo(args: Vec&lt;<span class="kw-2">&amp;</span>str&gt;) -&gt; String {
     <span class="kw">let </span><span class="kw-2">mut </span>out: String = String::new();
     <span class="kw">for </span>input <span class="kw">in </span>args {
         out += input;
@@ -120,14 +124,16 @@
     <span class="kw">if </span>out.len() &gt; <span class="number">1 </span>{
         out = out[..out.len() - <span class="number">1</span>].to_string();
     }
-    <span class="macro">println!</span>(<span class="string">&quot;{}&quot;</span>, out);
+    out
 }
 
 <span class="doccomment">/// Prints out user&#39;s current working directory by calling Rust&#39;s native
 /// ```env::current_dir``` function
-</span><span class="kw">pub fn </span>ls() {
+</span><span class="kw">pub fn </span>ls() -&gt; String {
     <span class="kw">if let </span><span class="prelude-val">Some</span>(current_dir) = env::current_dir().unwrap().to_str() {
-        <span class="macro">println!</span>(<span class="string">&quot;{}&quot;</span>, current_dir);
+        String::from(current_dir)
+    } <span class="kw">else </span>{
+        <span class="macro">panic!</span>(<span class="string">&quot;Could not complete ls command!&quot;</span>);
     }
 }</code></pre></div>
 </section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="command_line" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0 (84c898d65 2023-04-16)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
