@@ -3,22 +3,10 @@ use std::fs;
 use std::fs::File;
 use std::io::Write;
 
-/// Echo Function
-/// Prints out the user's input on the interface
+/// cat
+/// Redirects output from a file to either stdout or a user-specified file
 /// # Arguments
-/// ```args: Vec<&str>``` - vector representing space-separated inputs from user
-pub fn echo(args: Vec<&str>) {
-    let mut out: String = String::new();
-    for input in args {
-        out += input;
-        out += " ";
-    }
-    if out.len() > 1 {
-        out = out[..out.len() - 1].to_string();
-    }
-    println!("{}", out);
-}
-
+/// ```args: Vec<&str>``` - command-line arguments provided to ```cat```
 pub fn cat(args: Vec<&str>) {
     let i: &mut usize = &mut 0;
     let mut files_r: Vec<&str> = Vec::new();
@@ -48,5 +36,30 @@ pub fn cat(args: Vec<&str>) {
             let contents = fs::read_to_string(f).expect("Cannot read file!");
             print!("{}", contents);
         }
+    }
+}
+
+/// echo
+/// Prints out the user's input on the interface
+/// # Arguments
+/// ```args: Vec<&str>``` - vector representing space-separated inputs from user
+pub fn echo(args: Vec<&str>) {
+    let mut out: String = String::new();
+    for input in args {
+        out += input;
+        out += " ";
+    }
+    if out.len() > 1 {
+        out = out[..out.len() - 1].to_string();
+    }
+    println!("{}", out);
+}
+
+/// ls
+/// Prints out user's current working directory by calling Rust's native
+/// ```env::current_dir``` function
+pub fn ls() {
+    if let Some(current_dir) = env::current_dir().unwrap().to_str() {
+        println!("{}", current_dir);
     }
 }

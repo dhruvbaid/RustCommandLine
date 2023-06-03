@@ -18,16 +18,15 @@ fn main() {
         // in cli.rs
         match input_vec[0] {
             "" => {},
-            "echo" => {
-                cli::echo(input_vec[1..].to_vec());
-            },
             "cat" => {
                 cli::cat(input_vec[1..].to_vec());
             },
-            "^[[A" => {println!("UP")},
-            "^[[B" => {println!("DOWN")},
-            "^[[D" => {println!("LEFT")},
-            "^[[C" => {println!("RIGHT")},
+            "echo" => {
+                cli::echo(input_vec[1..].to_vec());
+            },
+            "ls" => {
+                cli::ls();
+            }
             "quit" => {break;},
             _ => {break;},
         }
