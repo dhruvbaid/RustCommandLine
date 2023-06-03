@@ -3,7 +3,6 @@ use std::fs;
 use std::fs::File;
 use std::io::Write;
 
-/// cat
 /// Redirects output from a file to either stdout or a user-specified file
 /// # Arguments
 /// ```args: Vec<&str>``` - command-line arguments provided to ```cat```
@@ -39,7 +38,6 @@ pub fn cat(args: Vec<&str>) {
     }
 }
 
-/// echo
 /// Prints out the user's input on the interface
 /// # Arguments
 /// ```args: Vec<&str>``` - vector representing space-separated inputs from user
@@ -55,7 +53,6 @@ pub fn echo(args: Vec<&str>) {
     println!("{}", out);
 }
 
-/// ls
 /// Prints out user's current working directory by calling Rust's native
 /// ```env::current_dir``` function
 pub fn ls() {
