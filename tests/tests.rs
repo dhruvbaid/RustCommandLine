@@ -1,4 +1,4 @@
-use cli::{cat, echo, ls};
+use cli::{echo, ls};
 
 #[test]
 pub fn test_echo() {
