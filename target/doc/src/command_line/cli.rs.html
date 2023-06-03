@@ -63,13 +63,13 @@
 <a href="#63" id="63">63</a>
 <a href="#64" id="64">64</a>
 <a href="#65" id="65">65</a>
+<a href="#66" id="66">66</a>
 </pre><pre class="rust"><code><span class="kw">use </span>std::env;
 <span class="kw">use </span>std::fs;
 <span class="kw">use </span>std::fs::File;
 <span class="kw">use </span>std::io::Write;
 
-<span class="doccomment">/// cat
-/// Redirects output from a file to either stdout or a user-specified file
+<span class="doccomment">/// Redirects output from a file to either stdout or a user-specified file
 /// # Arguments
 /// ```args: Vec&lt;&amp;str&gt;``` - command-line arguments provided to ```cat```
 </span><span class="kw">pub fn </span>cat(args: Vec&lt;<span class="kw-2">&amp;</span>str&gt;) {
@@ -104,10 +104,13 @@
     }
 }
 
-<span class="doccomment">/// echo
-/// Prints out the user&#39;s input on the interface
+<span class="doccomment">/// Prints out the user&#39;s input on the interface
 /// # Arguments
 /// ```args: Vec&lt;&amp;str&gt;``` - vector representing space-separated inputs from user
+/// # Basic Usage
+/// ```
+/// echo(vec![&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
+/// ```
 </span><span class="kw">pub fn </span>echo(args: Vec&lt;<span class="kw-2">&amp;</span>str&gt;) {
     <span class="kw">let </span><span class="kw-2">mut </span>out: String = String::new();
     <span class="kw">for </span>input <span class="kw">in </span>args {
@@ -120,8 +123,7 @@
     <span class="macro">println!</span>(<span class="string">&quot;{}&quot;</span>, out);
 }
 
-<span class="doccomment">/// ls
-/// Prints out user&#39;s current working directory by calling Rust&#39;s native
+<span class="doccomment">/// Prints out user&#39;s current working directory by calling Rust&#39;s native
 /// ```env::current_dir``` function
 </span><span class="kw">pub fn </span>ls() {
     <span class="kw">if let </span><span class="prelude-val">Some</span>(current_dir) = env::current_dir().unwrap().to_str() {

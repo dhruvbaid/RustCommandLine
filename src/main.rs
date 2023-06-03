@@ -22,10 +22,10 @@ fn main() {
                 cli::cat(input_vec[1..].to_vec());
             },
             "echo" => {
-                cli::echo(input_vec[1..].to_vec());
+                println!("{}", &cli::echo(input_vec[1..].to_vec()));
             },
             "ls" => {
-                cli::ls();
+                println!("{}", &cli::ls());
             }
             "quit" => {break;},
             _ => {break;},

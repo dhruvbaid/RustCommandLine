@@ -41,7 +41,12 @@ pub fn cat(args: Vec<&str>) {
 /// Prints out the user's input on the interface
 /// # Arguments
 /// ```args: Vec<&str>``` - vector representing space-separated inputs from user
-pub fn echo(args: Vec<&str>) {
+/// # Basic Usage
+/// ```
+/// use cli::echo;
+/// let res: String = echo(vec!["a", "b", "c"]);
+/// ```
+pub fn echo(args: Vec<&str>) -> String {
     let mut out: String = String::new();
     for input in args {
         out += input;
@@ -50,13 +55,15 @@ pub fn echo(args: Vec<&str>) {
     if out.len() > 1 {
         out = out[..out.len() - 1].to_string();
     }
-    println!("{}", out);
+    out
 }
 
 /// Prints out user's current working directory by calling Rust's native
 /// ```env::current_dir``` function
-pub fn ls() {
+pub fn ls() -> String {
     if let Some(current_dir) = env::current_dir().unwrap().to_str() {
-        println!("{}", current_dir);
+        String::from(current_dir)
+    } else {
+        panic!("Could not complete ls command!");
     }
 }
